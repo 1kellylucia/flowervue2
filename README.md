@@ -1,4 +1,4 @@
-# donationvue-3.0
+# flowerstorevue
 
 > A Vue.js project
 

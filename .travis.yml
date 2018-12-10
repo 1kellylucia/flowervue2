@@ -1,7 +1,7 @@
 dist: trusty
 language: node_js
 node_js:
-- stablegit
+- stable
 branches:
   only: development
 notifications:
