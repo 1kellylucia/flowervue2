@@ -1,0 +1,7 @@
+[
+  { "flower_": "star", "amount": 1200, "prize": 2 , "uplikes": 1 },
+  { "flower_": "sakura", "amount": 100,"prize": 1 , "uplikes": 0 },
+  { "flower_": "rose", "amount": 200, "prize": 3 ,"uplikes": 1 },
+  { "flower_": "star", "amount": 300,"prize": 2 , "uplikes": 2 }
+
+]
