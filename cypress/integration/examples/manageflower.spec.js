@@ -3,12 +3,12 @@ describe("Manage Flowers page", () => {
 
   beforeEach(() => {
     // Delete all flowers in the API's datastore
-    /*cy.request('http://localhost:8080/')
+    cy.request('http://localhost:3000/flowers')
       .its('body')
       .then( (flowers) => {
         flowers.forEach( (element) => {
           cy.request('DELETE',
-            'http://localhost:8080/' + element._id)
+            'http://localhost:3000/flowers/' + element._id)
         });
       })
     // Populate API's datastore
@@ -16,9 +16,9 @@ describe("Manage Flowers page", () => {
       .then((flowers) => {
         flowers.forEach((flower) => {
           cy.request('POST',
-            'http://localhost:8080/', flower )
+            'http://localhost:3000/flowers', flower )
         })
-      })*/
+      })
 
     cy.visit("/");
     // Click Manage Donations navbar link
@@ -27,20 +27,20 @@ describe("Manage Flowers page", () => {
 
   });
   it("allows a flower to be liked", () => {
-    cy.get('tbody').find('tr').should('have.length', 10)
+    cy.get('tbody').find('tr').should('have.length', 4)
     cy.get('tbody').find('tr:nth-child(3)').find('td:nth-child(6)').click()
     cy.get('tbody').find('tr:nth-child(3)').find('td:nth-child(4)').contains('1')
   });
   it("allows a flower to be deleted", () => {
-    cy.get('tbody').find('tr').should('have.length', 10)
+    cy.get('tbody').find('tr').should('have.length', 4)
     // Click trash/delete link of 3rd donation in list
     cy.get('tbody').find('tr:nth-child(3)').find('td:nth-child(8)').click()
     // Click confirmation button
     cy.get('button').contains('Delete').click()
-    cy.get('tbody').find('tr').should('have.length', 10)
+    cy.get('tbody').find('tr').should('have.length', 4)
   });
   it("allows a flower to be edited", () => {
-    cy.get('tbody').find('tr').should('have.length', 10)
+    cy.get('tbody').find('tr').should('have.length', 4)
     // Click trash/delete link of 3rd donation in list
     cy.get('tbody').find('tr:nth-child(3)').find('td:nth-child(7)').click()
     // Click confirmation button
@@ -54,7 +54,7 @@ describe("Manage Flowers page", () => {
     cy.get('button[type=submit]').click();
     cy.contains('Thanks for your add flowers!').should('exist');
     cy.get('a[data-test=BACK]').click();
-    cy.get('tbody').find('tr').should('have.length', 10)
+    cy.get('tbody').find('tr').should('have.length', 4)
   });
 
   it("shows error messages for incomplete form fields", () => {
