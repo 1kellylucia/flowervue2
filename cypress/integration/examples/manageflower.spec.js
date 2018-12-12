@@ -3,7 +3,7 @@ describe("Manage Flowers page", () => {
 
   beforeEach(() => {
     // Delete all flowers in the API's datastore
-    cy.request('http://localhost:8080/#/flowers')
+    cy.request('http://localhost:3000/')
       .its('body')
       .then( (flowers) => {
         flowers.forEach( (element) => {
