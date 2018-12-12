@@ -1,30 +1,34 @@
-# flowerstorevue
+# Assignment 2 - Vue app - Automated development process.
 
-> A Vue.js project
+Name: FlowerStoreVue
 
-## Build Setup
+Student No.:  20082474
 
-``` bash
-# install dependencies
-npm install
+## Overview.
 
-# serve with hot reload at localhost:8080
-npm run dev
+a website for online flower store
 
-# build for production with minification
-npm run build
+## E2E Testing.
 
-# build for production and view the bundle analyzer report
-npm run build --report
 
-# run unit tests
-npm run unit
+     $ npx cypress run --spec cypress/integration/home.spec.js
+     $ npx cypress run --spec cypress/integration/addflowers.spec.js
+     $ npx cypress run --spec cypress/integration/manageflower.spec.js  [might be the most important]
 
-# run e2e tests
-npm run e2e
+## Continuous Integration.
 
-# run all tests
-npm test
-```
+https://travis-ci.org/1kellylucia/flowervue2
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Automated Deployment.
+
+
+http://flowerstore.surge.sh/
+
+## Extra features.
+
+bitbucket reposity:https://bitbucket.org/kellylucia1/flowervuetest/src/master/
+
+## Appendix.
+
+     $ npx cypress run
+
