@@ -7,7 +7,13 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueSweetalert2 from 'vue-sweetalert2'
-
+import * as VueGoogleMaps from 'vue2-google-maps'
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyDfPKyVzTChIBUtfZswdw-0usagI-NZxB4',
+    libraries: 'places' // necessary for places input
+  }
+})
 Vue.use(BootstrapVue)
 Vue.use(VueSweetalert2)
 

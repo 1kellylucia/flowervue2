@@ -4,21 +4,73 @@
     <div class="container mt-3 mt-sm-5">
       <div class="row justify-content-center">
         <div class="col-md-6">
-            <label class="form-control-label" name="username">Username : <input class="form__input" type="text" v-model.trim="username"/></label>
+            <label class="form-control-label" name="username">username : <input class="form__input" type="text" v-model.trim="username"/></label>
             <label class="form-control-label" name="username">Password : &nbsp;<input class="form__input" type="password" v-model.trim="password"/></label>
         </div><!-- /col -->
       </div><!-- /row -->
     </div><!-- /container -->
-    <button class="btn btn-primary btn1" type="submit" :disabled="submitStatus === 'PENDING'">Confirm</button>
+    <button href="#/" class="btn btn-primary btn1" type="submit" @click="examineFlowers">Confirm</button>
   </div>
 </template>
 
 <script>
-export default {
+import Vue from 'vue'
+import VueForm from 'vueform'
+import Vuelidate from 'vuelidate'
+import PurchaserService from '@/services/PurchaserService'
+Vue.use(VueForm, {
+  inputClasses: {
+    valid: 'form-control-success',
+    invalid: 'form-control-danger'
+  }
+})
+Vue.use(Vuelidate)
+export default {/* eslint-disable */
   name: 'Login',
+  props: ['flowerBtnTitle', 'purchaser'],
   data () {
     return {
-      messagetitle: ' Login '
+      messagetitle: ' Login ',
+      purchasers:[],
+      loginForm: {
+      username: this.purchaser.PurchaserName,
+      password: this.purchaser.password},
+      loading:false
+    }
+  },
+  methods: {
+    examineFlowers: function(){
+      PurchaserService.fetchPurchasers()
+        .then(response => {
+          this.purchasers = response.data
+          if(this.purchasers.PurchaserName === this.purchaser.PurchaserName && this.purchasers.password ===this.purchase.password ) {
+            this.$router.push('/')
+          }
+        })
+        .catch(error => {
+          this.errors.push(error)
+          console.log(error)
+        })
+    },
+    submit () {
+      console.log('confirm!')
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        this.submitStatus = 'ERROR'
+      } else {
+        // do your submit logic here
+        this.submitStatus = 'PENDING'
+        setTimeout(() => {
+          this.submitStatus = 'OK'
+          var purchaser = {
+            PurchaserName: this.PurchaserName,
+            password:this.password
+          }
+          this.purchaser = purchaser
+          console.log('Submitting in FlowerForm : ' +
+            JSON.stringify(this.purchaser, null, 5))
+        }, 500)
+      }
     }
   }
 }

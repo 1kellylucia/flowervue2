@@ -1,5 +1,10 @@
 <template>
   <form @submit.prevent="submit">
+    <div class="form-group" :class="{ 'form-group--error': $v._id.$error }">
+      <label class="form-control-label" name="_id">ID (Enter "10000"+ NUMBER)</label>
+      <input class="form__input"  type="decimal" v-model.trim="_id"/>
+    </div>
+    <div class="error" v-if="!$v._id.between">ID MUST BE 10000 + NUMBER</div>
     <div class="form-group">
       <label class="form-label">Select Payment Type</label>
       <select id="flower_" name="flower_" class="form-control"
@@ -52,7 +57,9 @@ export default {
   props: ['flowerBtnTitle', 'flower'],
   data () {
     return {
+      /* eslint-disable */
       messagetitle: ' ADD ',
+      _id: this.flower._id,
       flower_: this.flower.flower_,
       amount: this.flower.amount,
       prize: this.flower.prize,
@@ -61,6 +68,10 @@ export default {
     }
   },
   validations: {
+    _id: {
+      required,
+      between: between(100001, 100300)
+    },
     amount: {
       required,
       between: between(1, 2000)
@@ -82,6 +93,7 @@ export default {
         setTimeout(() => {
           this.submitStatus = 'OK'
           var flower1 = {
+            _id: this._id,
             flower_: this.flower_,
             amount: this.amount,
             prize: this.prize,

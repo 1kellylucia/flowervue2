@@ -19,7 +19,7 @@ import FlowerForm from '@/components/FlowerForm'
 export default {
   data () {
     return {
-      flower: {flower_: 'Rose', amount: 10, prize: 10, message: ''},
+      flower: {_id: 100005, flower_: 'Rose', amount: 10, prize: 10, message: ''},
       messagetitle: ' Make Flower '
     }
   },

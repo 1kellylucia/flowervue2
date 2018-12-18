@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "flowerweb-ssd"
+    "default": "flowerweb-ssd",
+    "staging": "fourth-elixir-224713"
   }
 }
