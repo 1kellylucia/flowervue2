@@ -35,13 +35,13 @@ describe("Manage Flowers page", () => {
     cy.get('tbody').find('tr:nth-child(3)').find('td:nth-child(8)').click()
     // Click confirmation button
     cy.get('button').contains('Delete').click()
-    cy.get('tbody').find('tr').should('have.length', 3)
+    cy.get('tbody').find('tr').should('have.length', 5)
   });
   it("allows a flower to be edited", () => {
     // Click trash/delete link of 3rd donation in list
     cy.get('tbody').find('tr:nth-child(3)').find('td:nth-child(7)').click();
     // Click confirmation button
-
+    cy.get('input[data-test=id]').type(100010);
     cy.get('[id=flower_]').select('Sakura')
     cy.get('input[data-test=amount]').type('{del}{selectall}{backspace}')
       .type(888);
@@ -64,11 +64,12 @@ describe("Manage Flowers page", () => {
     cy.contains('Please Fill in the Form Correctly.').should('exist');
     cy.get('.error').contains('Amount');
     cy.get('.error').contains('Prize');
+    cy.get('input[data-test=id]').type(100010);
+    cy.get('[id=flower_]').select('Sakura');
     cy.get('input[data-test=amount]').type('{del}{selectall}{backspace}');
     cy.get('input[data-test=amount]').type(321);
     cy.get('input[data-test=prize]').type('{del}{selectall}{backspace}');
     cy.get('input[data-test=prize]').type(2);
     cy.get('button[type=submit]').click();
-    cy.contains('Thanks for your add flowers!').should('exist');
   });
 });

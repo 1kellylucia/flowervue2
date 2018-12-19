@@ -9,8 +9,8 @@ describe("Donate page", () => {
 
 
     it("allows a flower to be edited", () => {
-
-      cy.get('[id=flower_]').select('Sakura')
+      cy.get('input[data-test=id]').type(100010);
+      cy.get('[id=flower_]').select('Sakura');
       cy.get('input[data-test=amount]').type('{del}{selectall}{backspace}')
         .type(888);
       cy.get('input[data-test=prize]').type('{del}{selectall}{backspace}')
@@ -33,6 +33,8 @@ describe("Donate page", () => {
     cy.get('input[data-test=amount]').type(321);
     cy.get('input[data-test=prize]').type('{del}{selectall}{backspace}')
     cy.get('input[data-test=prize]').type(2);
+    cy.get('input[data-test=id]').type(100010);
+    cy.get('[id=flower_]').select('Sakura');
     cy.get('button[type=submit]').click();
     cy.contains('Thanks for your add flowers!').should('exist');
 

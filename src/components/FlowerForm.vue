@@ -2,7 +2,7 @@
   <form @submit.prevent="submit">
     <div class="form-group" :class="{ 'form-group--error': $v._id.$error }">
       <label class="form-control-label" name="_id">ID (Enter "10000"+ NUMBER)</label>
-      <input class="form__input"  type="decimal" v-model.trim="_id"/>
+      <input class="form__input" data-test="id" type="decimal" v-model.trim="_id"/>
     </div>
     <div class="error" v-if="!$v._id.between">ID MUST BE 10000 + NUMBER</div>
     <div class="form-group">

@@ -65,7 +65,7 @@ const router = new Router({
 });
 router.beforeEach((to, from, next) => {
   //所有需要检测登录状态的路由页面都放在这个数组里面
-  const nextRoute = [ 'home', 'flowers','addflowers'];
+  const nextRoute = ['home'];
   let isLogin = false
   if(getCookie('username')&&getCookie('password')){
     isLogin = true;
