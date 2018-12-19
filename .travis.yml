@@ -3,7 +3,7 @@ language: node_js
 node_js:
 - stable
 branches:
-  only: development
+  only: master
 notifications:
   email:
     recipients:
