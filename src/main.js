@@ -8,9 +8,15 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueSweetalert2 from 'vue-sweetalert2'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import {setCookie, getCookie, delCookie} from './services/cookie'
+Vue.prototype.$cookieStore = {
+  setCookie,
+  getCookie,
+  delCookie
+}
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyDfPKyVzTChIBUtfZswdw-0usagI-NZxB4',
+    key: 'AIzaSyCwuSJPS2gpD884NeTg_PH6-Oj3wI7Zaas',
     libraries: 'places' // necessary for places input
   }
 })

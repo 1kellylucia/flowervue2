@@ -17,7 +17,7 @@ export function getCookie (cname) {
   }
   return ''
 }
-
+/* eslint-disable */
 /* 删除cookie */
 export function delCookie (c_name) {
   setCookie(c_name, '', -1)

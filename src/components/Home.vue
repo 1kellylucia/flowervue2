@@ -20,7 +20,6 @@
     <p class="lead">This is the homepage of your <b>MEVN</b> Web app</p>
   </div>
 </template>
-
 <style>
   .hero {
     height: 100vh;
