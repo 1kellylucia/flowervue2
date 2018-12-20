@@ -26,6 +26,13 @@ describe('Home page', () => {
     })
 
     it('Redirects when links are clicked', () => {
+      cy.get('.navbar-nav:nth-child(1)').
+      find('.nav-item:nth-child(3)').click();
+      cy.get('input[data-test=username]').type('admin@123.com');
+      cy.get('input[data-test=password]').type('123456');
+      cy.get('button[type=submit]').click();
+      cy.get('.navbar-nav:nth-child(1)').
+      find('.nav-item:nth-child(3)').click();
       cy.get('[data-test=flowerbtn]').click()
       cy.url().should('include', '/addflowers')
       cy.get('.navbar').contains('Manage').click()

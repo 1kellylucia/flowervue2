@@ -1,5 +1,5 @@
 <template>
-  <div class="hero">
+  <div class="hero"><h2>ok logout~</h2>
   </div>
 </template>
 

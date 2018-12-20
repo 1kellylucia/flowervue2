@@ -1,8 +1,8 @@
 <template>
   <form @submit.prevent="submit">
     <div class="form-group" :class="{ 'form-group--error': $v._id.$error }">
-      <label class="form-control-label" name="_id">ID (Enter "10000"+ NUMBER)</label>
-      <input class="form__input" data-test="id" type="decimal" v-model.trim="_id"/>
+      <label class="mdc-floating-label" for="crane-name-input" name="_id">ID (Enter "10000"+ NUMBER)</label>
+      <input class="mdc-text-field__input" data-test="id" id="crane-name-input" type="decimal" v-model.trim="_id" required autofocus/>
     </div>
     <div class="error" v-if="!$v._id.between">ID MUST BE 10000 + NUMBER</div>
     <div class="form-group">
@@ -16,8 +16,8 @@
       </select>
     </div>
     <div class="form-group" :class="{ 'form-group--error': $v.amount.$error }">
-      <label class="form-control-label" name="amount">Amount (Enter a number between 1 and 2000)</label>
-      <input class="form__input" data-test="amount" type="decimal" v-model.trim="amount"/>
+      <label class="mdc-floating-label" for="crane-amount-input" name="amount">Amount (Enter a number between 1 and 2000)</label>
+      <input class="mdc-text-field__input" id="crane-amount-input" data-test="amount" type="decimal" v-model.trim="amount"/>
     </div>
     <div class="error" v-if="!$v.amount.between">Amount must be between 1 and 2000</div>
     <div class="form-group" :class="{ 'form-group--error': $v.prize.$error }">
@@ -162,7 +162,7 @@ export default {
 
   .error {
     border-color: red;
-    background: #157ffb;
+    background: #f1b0b7;
     color: whitesmoke;
   }
 

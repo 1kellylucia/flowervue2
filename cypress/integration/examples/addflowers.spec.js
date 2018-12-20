@@ -1,12 +1,21 @@
-describe("Donate page", () => {
+describe("floweradd page", () => {
 
   beforeEach(() => {
     cy.visit("/");
-    // Click Donate navbar link
     cy.get('.navbar-nav:nth-child(1)').
-    find('.nav-item:nth-child(3)').click()
+    find('.nav-item:nth-child(3)').click();
+    cy.get('input[data-test=username]').type('admin@123.com');
+    cy.get('input[data-test=password]').type('123456');
+    cy.get('button[type=submit]').click();
+    cy.get('.navbar-nav:nth-child(1)').
+    find('.nav-item:nth-child(3)').click();
   });
 
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+  });
 
     it("allows a flower to be edited", () => {
       cy.get('input[data-test=id]').type(100006);
@@ -35,7 +44,8 @@ describe("Donate page", () => {
     cy.get('input[data-test=prize]').type(2);
     cy.get('input[data-test=id]').type(100006);
     cy.get('[id=flower_]').select('Sakura');
-    cy.get('button[type=submit]').click();x
+    cy.get('button[type=submit]').click();
 
   });
   })
+

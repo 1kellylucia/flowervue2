@@ -2,12 +2,12 @@
   <div class="hero">
     <div class="form-group" :class="{ 'form-group--error': $v.username.$error }">
       <label class="form-control-label" name="username">Username (Enter email):</label>
-      <input class="form__input"  type="decimal" v-model.trim="username"/>
+      <input class="form__input" data-test="username" type="decimal" v-model.trim="username"/>
     </div>
     <div class="error" v-if="!$v.username.email">the format must be xxx@xx.xx</div>
     <div class="form-group" :class="{ 'form-group--error': $v.password.$error }">
       <label class="form-control-label" name="password">Password: </label>
-      <input class="form__input"  type="password" v-model.trim="password"/>
+      <input class="form__input" data-test="password" type="password" v-model.trim="password"/>
     </div>
     <div class="error" v-if="!$v.password.minLength">more than six amounts</div>
     <p>
@@ -95,28 +95,7 @@ Vue.use(GSignInButton)
       }
     }
   }
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{578545385949159}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{v3.2}'
-    });
-    FB.AppEvents.logPageView();
-  };
 
-(function(d, s, id){
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
 
 </script>
 

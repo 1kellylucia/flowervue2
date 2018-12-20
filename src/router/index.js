@@ -84,7 +84,7 @@ router.beforeEach((to, from, next) => {
   if (to.path.split('/')[to.path.split('/').length-1] === 'login') {
     if (isLogin) {
     	alert('you have been login')
-      router.push({path:'/home'})
+      router.push({path:'/'})
       location.reload();
     }
   }

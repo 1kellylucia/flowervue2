@@ -1,6 +1,6 @@
 <template >
   <div class="hero">
-    <h1 class="vue-title">Your online flower store!</h1>
+    <h1 class="vue-title">Online Flower Store</h1>
     <table align="center">
       <tr>
         <td>
@@ -13,7 +13,6 @@
         </td>
       </tr>
     </table>
-    <p class="lead">This is the homepage of your <b>MEVN</b> Web app</p>
     <a href="https://m.kuaidi100.com/" target="_blank">check your package</a>
   </div>
 </template>
@@ -34,7 +33,7 @@
     margin: 0 auto;
   }
   .vue-title {
-    font-size: 60pt;
+    font-size: 50pt;
     margin-bottom: 10px;
   }
 </style>
