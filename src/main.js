@@ -9,6 +9,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueSweetalert2 from 'vue-sweetalert2'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import {setCookie, getCookie, delCookie} from './services/cookie'
+import FBSignInButton from 'vue-facebook-signin-button'
+import GSignInButton from 'vue-google-signin-button'
+Vue.use(GSignInButton)
+Vue.use(FBSignInButton)
 Vue.prototype.$cookieStore = {
   setCookie,
   getCookie,

@@ -2,8 +2,6 @@ dist: trusty
 language: node_js
 node_js:
 - stable
-branches:
-  only: master
 notifications:
   email:
     recipients:
@@ -23,4 +21,4 @@ deploy:
   domain: flowerstore.surge.sh
   project: ./dist
   on:
-    branch: master
+    all_branches: true

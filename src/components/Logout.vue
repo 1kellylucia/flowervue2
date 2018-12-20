@@ -1,6 +1,5 @@
 <template>
   <div class="hero">
-    LOGOUT SUCCESSFULLY
   </div>
 </template>
 
@@ -9,7 +8,14 @@ export default {
   name: 'Logout',
   created () {
     this.deleteCookie()
+      .then(resp => {
+        alert('Successfully')
+      }).catch(error => {
+        console.log(error)
+        alert('oops!')
+      })
   },
+
   methods: {
     deleteCookie: function () {
       this.$cookieStore.delCookie('username')

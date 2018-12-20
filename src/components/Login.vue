@@ -14,17 +14,18 @@
       <button class="btn btn-primary btn1" type="submit" @click="examine"> confirm </button>
     </p>
     <div>
+      <fb-signin-button
+        :params="fbSignInParams"
+        @success="onSignInSuccess"
+        @error="onSignInError">
+        Sign in with Facebook
+      </fb-signin-button>
   </div>
-    <g-signin-button
-      :params="googleSignInParams"
-      @success="onSignInSuccess"
-      @error="onSignInError">
+    <g-signin-button :params="googleSignInParams" @success="onSignInSuccess" @error="onSignInError">
       Sign in with Google
     </g-signin-button>
   </div>
-
 </template>
-
 <script>
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -47,6 +48,10 @@ Vue.use(GSignInButton)
     data () {
       this.$cookieStore.setCookie( 'username' ,this.username,120);
       return {
+        fbSignInParams: {
+          scope: 'email,user_likes',
+          return_scopes: true
+        },
         username: this.username,
         password: this.password,
         googleSignInParams: {
@@ -140,7 +145,7 @@ function checkLoginState() {
     font-size: x-large;
   }
   .btn1 {
-    width: 300px;
+    width: 200px;
     font-size: large;
   }
   p {
@@ -174,13 +179,13 @@ function checkLoginState() {
     outline-color: #ffa519;
   }
   .g-signin-button {
-    /* This is where you control how the button looks. Be creative! */
     display: inline-block;
     padding: 4px 8px;
     border-radius: 3px;
     background-color: #3c82f7;
     color: #fff;
     box-shadow: 0 3px 0 #0f69ff;
+    margin: 10px;
   }
   .hero {
     height: 100vh;
@@ -188,5 +193,14 @@ function checkLoginState() {
     align-items: center;
     justify-content: center;
     text-align: center;
+  }
+  .fb-signin-button {
+    /* This is where you control how the button looks. Be creative! */
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    background-color: #4267b2;
+    color: #fff;
+    margin: 10px;
   }
 </style>
