@@ -64,7 +64,6 @@ const router = new Router({
   ]
 });
 router.beforeEach((to, from, next) => {
-  //所有需要检测登录状态的路由页面都放在这个数组里面
   const nextRoute = ['home'];
   let isLogin = false
   if(getCookie('username')&&getCookie('password')){
@@ -73,7 +72,7 @@ router.beforeEach((to, from, next) => {
   }
 
   //nextRoute.indexOf(to.path.split('/')[1]) >= 0表示导航栏能够获取到数据，表示进入到了该页面中
-  if (nextRoute.indexOf(to.path.split('/')[1]) >= 0) {
+ /* if (nextRoute.indexOf(to.path.split('/')[1]) >= 0) {
     //检测是不是未登录状态，如果登录了就不做处理（页面跳转到上面数组的哪就是哪），未登录就去登录页
     if (!isLogin) {
       next({
@@ -94,7 +93,7 @@ router.beforeEach((to, from, next) => {
       router.push({path:'/home'})
       location.reload();
     }
-  }
+  }*/
   next();
 });
 export default router;

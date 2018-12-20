@@ -137,6 +137,7 @@ export default {
   .btn1 {
     width: 300px;
     font-size: x-large;
+    color: #ffffff;
   }
   p {
     margin-top: 20px;
@@ -145,7 +146,7 @@ export default {
   input {
     border: 1px solid silver;
     border-radius: 4px;
-    background: white;
+    background: #fff9c4;
     padding: 5px 10px;
     width: 540px;
   }

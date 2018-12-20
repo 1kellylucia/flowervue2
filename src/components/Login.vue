@@ -1,32 +1,38 @@
 <template>
   <div class="hero">
     <div class="form-group" :class="{ 'form-group--error': $v.username.$error }">
-      <label class="form-control-label" name="username">username (Enter your email)</label>
+      <label class="form-control-label" name="username">Username (Enter email):</label>
       <input class="form__input"  type="decimal" v-model.trim="username"/>
     </div>
     <div class="error" v-if="!$v.username.email">the format must be xxx@xx.xx</div>
     <div class="form-group" :class="{ 'form-group--error': $v.password.$error }">
-      <label class="form-control-label" name="password">password </label>
+      <label class="form-control-label" name="password">Password: </label>
       <input class="form__input"  type="password" v-model.trim="password"/>
     </div>
     <div class="error" v-if="!$v.password.minLength">more than six amounts</div>
     <p>
-      <button class="btn btn-primary btn1" type="submit" @:click="examine"> confirm </button>
+      <button class="btn btn-primary btn1" type="submit" @click="examine"> confirm </button>
     </p>
-  <g-signin-button
-    :params="googleSignInParams"
-    @success="onSignInSuccess"
-    @error="onSignInError">
-    Sign in with Google
-  </g-signin-button>
+    <div>
   </div>
+    <g-signin-button
+      :params="googleSignInParams"
+      @success="onSignInSuccess"
+      @error="onSignInError">
+      Sign in with Google
+    </g-signin-button>
+  </div>
+
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import 'firebase/auth'
 import Vue from 'vue'
 import VueForm from 'vueform'
 import Vuelidate from 'vuelidate'
 import {required, email, minLength} from 'vuelidate/lib/validators'
+import userservice from '@/services/UserService'
 import GSignInButton from 'vue-google-signin-button'
 Vue.use(VueForm, {
   inputClasses: {
@@ -41,8 +47,8 @@ Vue.use(GSignInButton)
     data () {
       this.$cookieStore.setCookie( 'username' ,this.username,120);
       return {
-        username: this.user.username,
-        password: this.user.password,
+        username: this.username,
+        password: this.password,
         googleSignInParams: {
           client_id: '284175350879-trj32t4befd2jt0ntmg9sluao9hvnk5i.apps.googleusercontent.com'
         }
@@ -59,8 +65,21 @@ Vue.use(GSignInButton)
       }
     },
     methods: {
+      signInWithGoogle() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider);
+      },
       examine: function(){
-
+         let me =this;
+         userservice.checkUsers(me.username,me.password)
+           .then(resp =>{
+             this.$cookieStore.setCookie('username' ,me.username,120);
+             this.$cookieStore.setCookie('password' ,me.password,120);
+             alert('Successfully');
+           }).catch(error=>{
+             console.log(error);
+             alert('oops!');
+         })
       },
       onSignInSuccess (googleUser) {
         const profile = googleUser.getBasicProfile() // etc etc
@@ -71,6 +90,28 @@ Vue.use(GSignInButton)
       }
     }
   }
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{578545385949159}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{v3.2}'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 </script>
 
@@ -90,7 +131,7 @@ Vue.use(GSignInButton)
 
   label {
     display: inline-block;
-    width: 540px;
+    width: 300px;
     text-align: left;
     font-size: x-large;
   }
@@ -100,7 +141,7 @@ Vue.use(GSignInButton)
   }
   .btn1 {
     width: 300px;
-    font-size: x-large;
+    font-size: large;
   }
   p {
     margin-top: 20px;
@@ -111,7 +152,7 @@ Vue.use(GSignInButton)
     border-radius: 4px;
     background: white;
     padding: 5px 10px;
-    width: 540px;
+    width: 300px;
   }
 
   .dirty {
@@ -140,5 +181,12 @@ Vue.use(GSignInButton)
     background-color: #3c82f7;
     color: #fff;
     box-shadow: 0 3px 0 #0f69ff;
+  }
+  .hero {
+    height: 100vh;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h2>Search and add a pin</h2>
+      <div style="margin-top:20px;"><h1><i class="fa fa-globe" style="padding: 5px">MAP</i></h1></div>
       <label>
         <gmap-autocomplete
           @place_changed="setPlace">
@@ -15,8 +15,7 @@
     <gmap-map
       :center="center"
       :zoom="12"
-      style="width:100%;  height: 400px;"
-    >
+      style="width:80%;  height: 400px; margin-left: 100px;">
       <gmap-marker
         :key="index"
         v-for="(m, index) in markers"
@@ -74,3 +73,6 @@
   }
 }
 </script>
+<style>
+
+</style>

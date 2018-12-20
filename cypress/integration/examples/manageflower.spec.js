@@ -41,7 +41,7 @@ describe("Manage Flowers page", () => {
     // Click trash/delete link of 3rd donation in list
     cy.get('tbody').find('tr:nth-child(3)').find('td:nth-child(7)').click();
     // Click confirmation button
-    cy.get('input[data-test=id]').type(100010);
+    cy.get('input[data-test=id]').type(100006);
     cy.get('[id=flower_]').select('Sakura')
     cy.get('input[data-test=amount]').type('{del}{selectall}{backspace}')
       .type(888);
@@ -64,7 +64,7 @@ describe("Manage Flowers page", () => {
     cy.contains('Please Fill in the Form Correctly.').should('exist');
     cy.get('.error').contains('Amount');
     cy.get('.error').contains('Prize');
-    cy.get('input[data-test=id]').type(100010);
+    cy.get('input[data-test=id]').type(100006);
     cy.get('[id=flower_]').select('Sakura');
     cy.get('input[data-test=amount]').type('{del}{selectall}{backspace}');
     cy.get('input[data-test=amount]').type(321);

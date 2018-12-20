@@ -40,7 +40,8 @@ export default {
   text-align: center;
   color: #000000;
   padding-top: 20px;
-  background: WHITE;
+  background: #fffde7;
+  height:100%;
 }
 .VueTables__sortable {
   cursor: pointer;

@@ -1,13 +1,11 @@
-<template>
+<template >
   <div class="hero">
     <h1 class="vue-title">Your online flower store!</h1>
-
     <table align="center">
       <tr>
         <td>
-          <p class="lead"><b><i>Time for a change !!</i></b>
-          <p>GIVE THE CHANCE TO PROVIDE FLOWERS FAST</p>
-          <p>Just click <a href ="#/addflower">here</a> to go to</p>
+          <p class="lead"><b><i>GIVE THE CHANCE TO PROVIDE FLOWERS FAST</i></b>
+          <p>Just click <a href ="#/addflowers">here</a> to go to</p>
           <p>add your flower supply</p>
         </td>
         <td>
@@ -15,9 +13,8 @@
         </td>
       </tr>
     </table>
-
-    <p></p>
     <p class="lead">This is the homepage of your <b>MEVN</b> Web app</p>
+    <a href="https://m.kuaidi100.com/" target="_blank">check your package</a>
   </div>
 </template>
 <style>
